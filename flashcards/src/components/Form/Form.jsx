@@ -1,25 +1,30 @@
 import { useState } from "react";
 
-export default function Form() {
+export default function Form({
+  qText,
+  aText,
+  handleChangeQ,
+  handleChangeA,
+  onClick,
+}) {
   // We want to take the input of Question and Answer and store it in an object
   // We click an Add button and sends that object down to Flashcards
 
-  const [question, setQuestion] = useState(["Test 1"]);
-  const [answer, setAnswer] = useState("Test 2");
+  // Actually, we are going to need to lift these up to App,
+  // and have the handleSubmit function and the text be passed down from there...?
 
-  function handleSubmit(e) {
-    e.preventDefault();
-    const form = e.target;
-    const formData = new FormData(form);
-    console.log("Example", form, formData.entries());
-  }
+  // function handleSubmit(e) {
+  //   const form = e.target;
+  //   const formData = new FormData(form);
+  //   console.log(formData.entries);
+  // }
 
   return (
     <div>
-      <form method="post" onSubmit={handleSubmit}>
-        <input name="question" defaultValue="Question"></input>
-        <input name="answer" defaultValue="Answer"></input>
-        <button type="submit">Add</button>
+      <form>
+        <input name="q" value={qText} onChange={handleChangeQ}></input>
+        <input name="a" value={aText} onChange={handleChangeA}></input>
+        <button onClick={onClick}>Add</button>
       </form>
     </div>
   );
