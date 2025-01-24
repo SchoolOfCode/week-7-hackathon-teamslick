@@ -4,8 +4,8 @@ import Flashcards from "./components/Flashcards.jsx";
 import Form from "./components/Form/Form.jsx";
 
 function App() {
-  const [newQ, setNewQ] = useState("this is held as state in App");
-  const [newA, setNewA] = useState("so is this");
+  const [newQ, setNewQ] = useState("");
+  const [newA, setNewA] = useState("");
 
   const [qAndA, setQAndA] = useState([
     [
@@ -50,7 +50,6 @@ function App() {
     e.preventDefault(); //this stops the page refreshing
     const newArr = qAndA.slice(); // make a copy, since we mustn't mutate state
     newArr.push([newQ, newA]);
-    console.log(newArr);
     setQAndA(newArr);
   }
 
